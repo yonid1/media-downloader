@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "מוריד מדיה",
+  "short_name": "מוריד מדיה",
+  "version": "1.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsHTV0ctAJO2Wo5Xe4JLdDVvcbixqwSfol2Qeyct2/516EfFHBqYvZPI5yutSgo8g4KnR9z6oGsjRp92s2AW2tjuIz2XIA9xM27BMSu9fNKE+dir1ik0oEUXetE7hfeq815SJfQ0GKusz1svOHEYr1fCBFcFZUhM2Qxp2VMFPEnJNckDuGpo7ADNywiF6u0UkpPgEr1a5wlFSGOG5ihzhthIk+yOFl0LUOrWQKJXeZeZJjB3dhGpdWhrSftffImb0tlXYE4pOQ+E6lGrAKMOaqIFk/GApAVUh+IS3GPfibqfdJvm+/1JOxd+NnFyyMsoEA7oVeDQLnWY+GlDmMEhcXwIDAQAB",
+  "description": "מזהה קבצי וידאו ואודיו בעמוד ומוריד אותם בלחיצה, מוריד מיוטיוב דרך yt-dlp ומדלג על פרסומות.",
+  "permissions": [
+    "downloads",
+    "webRequest",
+    "storage",
+    "contextMenus",
+    "nativeMessaging"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "youtube.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "מוריד מדיה",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
